@@ -14,7 +14,7 @@ df = {x: sp.diff(function, x) for x in args.split()}
 
 # Зададим первую точку и шаг
 a0 = (10, 1)
-h = 0.1
+h = 0.05
 
 # Находим все координаты градиентного спуска
 point = a0
@@ -22,7 +22,7 @@ points = (a0,)
 for _ in range(20):
 	fx1 = sp.lambdify(x1, df['x1'])(point[0])
 	fx2 = sp.lambdify(x2, df['x2'])(point[1])
-	point = ((point[0] - h * fx1), (point[1] - h * fx2))
+	point = (point[0] - h * fx1), (point[1] - h * fx2)
 	points += point,
 	if abs(fx1) < 0.008:
 		break
