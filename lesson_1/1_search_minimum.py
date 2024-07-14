@@ -18,11 +18,11 @@ all_solutions = [round(i, 2) for i in sp.solve(func_diff, x)]
 # Выводим минимум
 print('Значение в минимуме (локальный минимум по оси Х):', min(all_solutions))
 
+
 # Генерируем данные для графика
 x_value = np.linspace(-3, 3, 10)
-y_value = sp.lambdify(x, func)(x_value)
-
-# Строим график функции
+y_value = [x * (x ** 2 - 9) for x in x_value]
 plt.plot(x_value, y_value)
 plt.grid(True)
-# plt.show()
+
+plt.show()
