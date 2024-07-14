@@ -38,6 +38,7 @@ for n in range(t):
 point = a0
 points = (a0,)
 t = 40
+e = 0.001		# Константа, близкая к 0
 G = [0, 0]		#
 for n in range(t):
 	fx1 = sp.lambdify(x1, df['x1'])(point[0])
@@ -45,8 +46,8 @@ for n in range(t):
 	G[0] += fx1 ** 2
 	G[1] += fx2 ** 2
 	point = (
-			point[0] - h / (G[0] ** 0.5 + 0.001) * fx1,
-			point[1] - h / (G[1] ** 0.5 + 0.001) * fx2
+			point[0] - h / (G[0] ** 0.5 + e) * fx1,
+			point[1] - h / (G[1] ** 0.5 + e) * fx2
 			)
 	points += point,
 	if abs(fx1) < 0.008 > abs(fx2):
