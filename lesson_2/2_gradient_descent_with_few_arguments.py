@@ -22,9 +22,9 @@ points = (a0,)
 for _ in range(20):
 	fx1 = sp.lambdify(x1, df['x1'])(point[0])
 	fx2 = sp.lambdify(x2, df['x2'])(point[1])
-	point = (point[0] - h * fx1), (point[1] - h * fx2)
+	point = point[0] - h * fx1, point[1] - h * fx2
 	points += point,
-	if abs(fx1) < 0.008:
+	if abs(fx1) < 0.008 > abs(fx2):
 		break
 
 
