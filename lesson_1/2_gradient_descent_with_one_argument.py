@@ -20,7 +20,7 @@ lamb_diff_function = sp.lambdify(x, diff_function)
 
 
 # Вычислим новые координаты точки "a" при помощи градиентного спуска и сохраним все значения в переменную "y"
-y = [a0]		# список координат для оси y
+y = [a0]
 a = a0
 while True:
 	ldf = lamb_diff_function(a)
@@ -31,10 +31,15 @@ while True:
 
 
 # Генерируем данные для графика
-x_value = np.linspace(start=0, stop=15, num=len(y))
-y_value = y
-
-# Строим график функции
+x_value = np.linspace(start=0, stop=4, num=len(y))
+y_value = [x ** 3 - x for x in x_value]
 plt.plot(x_value, y_value)
 plt.grid(True)
-# plt.show()
+
+# Координаты градиентного спуска
+x_grad = y
+y_grad = [x ** 2 for x in y]
+plt.scatter(x_grad, y_grad, color='red')
+
+# Выводим график на экран
+plt.show()
