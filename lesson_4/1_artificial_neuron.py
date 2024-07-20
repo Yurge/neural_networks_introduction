@@ -18,3 +18,21 @@ def neural(data_in, weights, offset):
 data_out = neural(x, w, w0)
 
 print(data_out)
+
+
+
+
+# ----------------   Поиск w1 и w0 если   4 * w1 + w0 = 1   и   2 * w1 + w0 = 3  ------------
+from sympy import symbols, solve
+
+w1, w0 = symbols('w1 w0')
+func = lambda x: x * w1 + w0
+
+f1 = func(4) - 1
+f2 = func(2) - 3
+
+vals = solve((f1, f2), (w1, w0))
+print(vals)
+
+X = 0
+# print(func(X).subs(vals))
