@@ -27,8 +27,10 @@ point = a0
 points = (a0,)
 epoch = 5
 for _ in range(epoch):								# Кол-во эпох
+	funcs = F_w.copy()
 	for _ in range(len(x_val)):						# одна эпоха - размер ТВ
-		func = choice(F_w)							# Отбираем одно слагаемое
+		func = choice(funcs)						# отбираем одно слагаемое
+		funcs.remove(func)							# удаляем это слагаемое, чтобы больше на него не попадать
 		df_w1 = diff(func, w1)				# находим производные
 		df_w0 = diff(func, w0)
 		ldf_w1 = lambdify((w0, w1), expr=df_w1)(w0=point[0], w1=point[1])
@@ -38,6 +40,6 @@ for _ in range(epoch):								# Кол-во эпох
 		if abs(ldf_w0) < 0.008 > abs(ldf_w1):
 			break
 
-print(*points, sep='\n')
+# print(*points, sep='\n')
 w0_optim, w1_optim = point							# Сохраним оптимальные веса для предсказания новых данных
 print(w0_optim, w1_optim)
